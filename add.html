@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        form {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 500px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        input[type="number"],
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        input::placeholder {
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <form name="add" method="POST" action="{% url 'addUser' %}">
+            {% csrf_token %}
+            <h1>Add New User</h1>
+            <input type="number" name="tuid" placeholder="UID (Primary Key)" required><br>
+            <input type="text" name="tuname" placeholder="Name of the candidate" required><br>
+            <input type="text" name="tumail" placeholder="Enter email" required><br>
+            <input type="password" name="tpassword" placeholder="Password" required><br>
+            <input type="text" name="trole" placeholder="Student/Faculty" required><br>
+            <input type="text" name="tstatus" placeholder="Status (active/inactive)" required><br>
+            <input type="text" name="tdept" placeholder="Enter department" required><br>
+            <input type="submit" name="reg" value="Add User">
+        </form>
+    </center>
+</body>
+</html>

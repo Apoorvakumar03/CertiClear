@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        main {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 20px;
+            height: calc(100vh - 40px);
+        }
+        .menu, .content {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            margin-top: 20px;
+        }
+        .menu {
+            width: 200px;
+        }
+        .content {
+            margin-left: 20px;
+            flex: 1;
+        }
+        .menu button {
+            display: block;
+            width: 100%;
+            padding: 10px 20px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .menu .add {
+            background-color: rgb(5, 139, 45);
+        }
+        .menu .view {
+            background-color: rgb(8, 104, 152);
+        }
+        .menu .delete {
+            background-color: rgb(195, 3, 105);
+        }
+        .menu .edit {
+            background-color: orange;
+
+        }
+        .menu .delete_Q {
+            background-color: rgb(195, 3, 105);
+        }
+        .menu button:hover {
+            opacity: 0.8;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <script>
+        function loadContent(url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('content').innerHTML = data;
+                });
+        }
+        
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Admin Page</h1>
+    </header>
+    <main>
+        <div class="menu">
+           
+            <button class="add" onclick="loadContent('add.html')">Add</button>
+            <button class="view" onclick="loadContent('view.html')">View</button>
+            <button class="edit" onclick="loadContent('edit.html')">Edit</button>
+            <button class="delete" onclick="loadContent('delete.html')">Delete</button>
+            <button class="delete_Q" onclick="loadContent('delete_Q.html')">delete_Q</button>
+            
+        </div>
+        <div class="content" id="content">
+            
+            {% if error_message %}
+                <div style="color: red;">{{ error_message }}</div>
+            {% endif %}
+        
+            {% if success_message %}
+                <div style="color: green;">{{ success_message }}</div>
+            {% endif %}
+        
+            {% if viewOk %}
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>UID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                               
+                                <th>Password</th>
+                                <th>Status</th>
+                                <th>role</th>
+                                <th>Department</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
+                                <tr>
+                                    <td>{{ user.uid }}</td>
+                                    <td>{{ user.uname }}</td>
+                                    <td>{{ user.uemail }}</td>
+                                    <td>{{ user.upassword }}</td>
+                                    <td>{{ user.status }}</td>
+                                    <td>{{user.role}}</td>
+                                    <td>{{user.department}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endif %}
+            <h1>New Pages</h1>
+
+            {% if enter %}
+                <div style="color: red;">{{ error_message }}</div>
+            {% endif %}
+            <p>Content for the new pages will be displayed here.</p>
+        </div>
+    </main>
+</body>
+</html>

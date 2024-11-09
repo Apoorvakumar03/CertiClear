@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            background-color: #e0f7fa;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        h2.main-heading {
+            color: #00796b;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            background-color: #ffffff;
+            padding: 40px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        input[type="submit"] {
+            background-color: #00796b;
+            color: white;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #004d40;
+        }
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        h3, h1 {
+            color: #00796b;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .input-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="password"], input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .center-text {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="main-heading"><b>Name of the University</b></h2>
+    <form action="{% url 'loginUser' %}" method="post">
+        {% if error %}
+            <div class="error-message">{{ error }}</div>
+        {% endif %}
+        {% csrf_token %}
+        <div class="center-text">
+            <h2>No Due Certificate Clearance System</h2>
+        </div>
+        <div>
+            <h1>Login</h1>
+            <div class="input-container">
+                <input type="number" name="luid" placeholder="Enrollment Number" required>
+            </div>
+            <div class="input-container">
+                <input type="password" name="lpasswd" placeholder="Password" required>
+            </div>
+        </div>
+        <div>
+            <input type="submit" name="submit" value="Login">
+        </div>
+    </form>
+</body>
+</html>

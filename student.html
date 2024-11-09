@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .message {
+            color: #0680f2;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .details {
+            color: #00050a;
+            margin-bottom: 20px;
+        }
+        .select-container {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="{% url 'studentData' %}" method="post">
+            {% csrf_token %}
+
+            {% if message1 %}
+                {% for i, j in message1 %}
+                    <div class="details">{{ i }}: {{ j }}</div>
+                {% endfor %}
+            {% endif %}
+
+            {% if message2 %}
+                <input type="hidden" name="message2" value="{{ message2 }}">
+            {% endif %}
+
+            <div class="select-container">
+                <label for="check">Choice:</label>
+                <select id="check" name="check" class="form-control">
+                    <option value="apply">Apply</option>
+                    <option value="track">Track</option>
+                </select>
+            </div>
+
+            <input type="submit" name="submit" value="Submit" class="btn">
+        </form>
+    </div>
+</body>
+</html>

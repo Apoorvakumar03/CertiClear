@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 40px); /* Adjust for header height and padding */
+        }
+        .button-container {
+            text-align: center;
+        }
+        .button-container button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .button-container button.add {
+            background-color: rgb(5, 139, 45);
+        }
+        .button-container button.view {
+            background-color: rgb(8, 104, 152);
+        }
+        .button-container button.delete {
+            background-color: rgb(245, 89, 172);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Page</h1>
+    </header>
+    <main>
+        <div class="button-container">
+            <form action="" method="post">
+                <button class="add" type="submit" style="background-color: rgb(5, 139, 45);">Add</button>
+                <button class="view" type="submit" style="background-color: rgb(8, 104, 152);">View</button>
+                <button class="delete" type="submit" style="background-color: rgb(245, 89, 172);">Delete</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

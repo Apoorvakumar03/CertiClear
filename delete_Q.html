@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New User</title>
+    <style>
+        input[type="text"] {
+            width: 200px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        input[type="text"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+            outline: none;
+        }
+        input[type="submit"] {
+            background-color: #fd9308;
+            color: #ffffff;
+            border: none;
+            padding: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 150px;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #bd2806;
+            transform: translateY(-2px);
+        }
+    
+    </style>
+    
+</head>
+<body>
+    <center>
+       
+        <form name="add" method="POST" action="{% url 'delete_Queue' %}">
+            {% csrf_token %}
+            <input type="text" name="Quid" placeholder="enrollment number" width="200px">
+            <input type="submit" value="reset">
+           
+        </form>
+    </center>
+</body>
+</html>

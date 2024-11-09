@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display</title>
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 600px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .message {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+        .alert-primary {
+            background-color: #cce5ff;
+            color: #004085;
+        }
+        .status-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .status-table th, .status-table td {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            text-align: center;
+        }
+        .status-table thead {
+            background-color: #343a40;
+            color: #fff;
+        }
+        .status-table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .pdf-link-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .pdf-link {
+            
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .pdf-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if message3 %}
+        <div class="alert-info message">{{ message3 }}</div>
+        {% endif %}
+
+        {% if message %}
+        <div class="alert-primary message">NOC for the student with UID is - {{ message }}</div>
+        {% endif %}
+
+        {% if message2 %}
+        <div>
+            <table class="status-table">
+                <thead>
+                    <tr>
+                        <th>Department</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i, j in message2 %}
+                    <tr>
+                        <td>{{ i }}</td>
+                        <td>{{ j }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {% endif %}
+    
+    {%if pmessage%}
+        <div class="pdf-link-container">
+            <a href="{% static 'certifiacate.pdf' %}" target="_blank" class="pdf-link">View PDF </a>
+        </div>
+        <!--
+        <a href="certifiacate.pdf" target="_blank">view pdf</a> 
+        <a href="certifiacate.pdf" >Download PDF</a>
+        -->
+    {%endif %}
+    </div>
+</div>
+</body>
+</html>
